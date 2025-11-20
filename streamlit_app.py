@@ -249,7 +249,6 @@ if "Type_etab" in df_prof.columns:
     col1, col2 = st.sidebar.columns(2)
     with col1:
         select_all_lycees = st.checkbox("Tous lycées", value=False)
-        select_all_types = st.checkbox("Tous les établissements", value=False)
     with col2:
         select_all_colleges = st.checkbox("Tous collèges", value=False)
 
@@ -280,8 +279,6 @@ if "Type_etab" in df_prof.columns:
     elif select_all_colleges:
         # Seulement les collèges
         default_types = [t for t in college_types if t in all_types]
-    elif select_all_types:
-        default_types = all_types
 
     # Cases à cocher pour chaque type
     selected_types = st.sidebar.multiselect(
