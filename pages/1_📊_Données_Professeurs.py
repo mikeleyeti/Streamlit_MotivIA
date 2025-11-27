@@ -2,234 +2,22 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
+import sys
+import os
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils import create_pie_chart, create_pie_chart_split
 
-def create_pie_chart(
-    df, column_name, title=None, color_scheme="Set2", height=500, chart_type="pie"
-):
-    """
-    Crée un diagramme circulaire ou en barres pour une variable donnée (sans split).
-
-    Parameters:
-    -----------
-    df : pandas.DataFrame
-        Le dataframe contenant les données
-    column_name : str
-        Le nom de la colonne à analyser
-    title : str, optional
-        Le titre du graphique (par défaut: "Répartition par {column_name}")
-    color_scheme : str, optional
-        La palette de couleurs Plotly (par défaut: "Set2")
-    height : int, optional
-        La hauteur du graphique en pixels (par défaut: 500)
-    chart_type : str, optional
-        Type de graphique: 'pie' ou 'bar' (par défaut: 'pie')
-
-    Returns:
-    --------
-    plotly.graph_objects.Figure
-        Le graphique Plotly créé
-    """
-
-    value_counts = df[column_name].value_counts()
-
-    if title is None:
-        title = f"Répartition par {column_name.replace('_', ' ').lower()}"
-
-    if chart_type == "pie":
-        fig = px.pie(
-            values=value_counts.values,
-            names=value_counts.index,
-            title=title,
-            labels={"names": column_name.replace("_", " "), "values": "Nombre"},
-            color_discrete_sequence=getattr(px.colors.qualitative, color_scheme),
-        )
-
-        fig.update_traces(
-            textposition="inside",
-            textinfo="percent+label",
-            hovertemplate="<b>%{label}</b><br>Nombre: %{value}<br>Pourcentage: %{percent}<extra></extra>",
-        )
-
-        fig.update_layout(
-            showlegend=True,
-            legend=dict(orientation="v", yanchor="top", y=1, xanchor="left", x=1.02),
-            margin=dict(r=250),
-            height=height,
-        )
-
-    else:  # bar chart
-        # Créer un dataframe pour le graphique
-        df_plot = pd.DataFrame(
-            {
-                "Catégorie": value_counts.index,
-                "Nombre": value_counts.values,
-                "Pourcentage": (value_counts.values / value_counts.sum() * 100).round(
-                    1
-                ),
-            }
-        )
-
-        fig = px.bar(
-            df_plot,
-            x="Catégorie",
-            y="Nombre",
-            title=title,
-            text="Nombre",
-            color="Catégorie",
-            color_discrete_sequence=getattr(px.colors.qualitative, color_scheme),
-        )
-
-        fig.update_traces(
-            texttemplate="%{text}",
-            textposition="outside",
-            hovertemplate="<b>%{x}</b><br>Nombre: %{y}<br>Pourcentage: %{customdata:.1f}%<extra></extra>",
-            customdata=df_plot["Pourcentage"],
-        )
-
-        fig.update_layout(
-            showlegend=False,
-            xaxis_title=column_name.replace("_", " "),
-            yaxis_title="Nombre de réponses",
-            xaxis_tickangle=-45,
-            margin=dict(b=100),
-            height=height,
-        )
-
-    return fig
-
-
-def create_pie_chart_split(
-    df,
-    column_name,
-    title=None,
-    color_scheme="Set2",
-    height=500,
-    separator=",",
-    chart_type="pie",
-):
-    """
-    Crée un diagramme circulaire ou en barres pour une variable avec réponses multiples séparées.
-
-    Parameters:
-    -----------
-    df : pandas.DataFrame
-        Le dataframe contenant les données
-    column_name : str
-        Le nom de la colonne à analyser
-    title : str, optional
-        Le titre du graphique (par défaut: "Répartition par {column_name}")
-    color_scheme : str, optional
-        La palette de couleurs Plotly (par défaut: "Set2")
-    height : int, optional
-        La hauteur du graphique en pixels (par défaut: 500)
-    separator : str, optional
-        Le séparateur utilisé pour les réponses multiples (par défaut: ',')
-    chart_type : str, optional
-        Type de graphique: 'pie' ou 'bar' (par défaut: 'pie')
-
-    Returns:
-    --------
-    plotly.graph_objects.Figure
-        Le graphique Plotly créé
-    """
-
-    # Séparer les valeurs multiples et compter toutes les occurrences
-    values_list = []
-    for value in df[column_name].dropna():
-        # Séparer par le séparateur et nettoyer les espaces
-        split_values = [val.strip() for val in str(value).split(separator)]
-        values_list.extend(split_values)
-
-    # Compter les occurrences
-    value_counts = pd.Series(values_list).value_counts()
-
-    # Titre par défaut si non spécifié
-    if title is None:
-        title = f"Répartition par {column_name.replace('_', ' ').lower()} (réponses multiples)"
-
-    # Créer le graphique selon le type choisi
-    if chart_type == "pie":
-        fig = px.pie(
-            values=value_counts.values,
-            names=value_counts.index,
-            title=title,
-            labels={"names": column_name.replace("_", " "), "values": "Nombre"},
-            color_discrete_sequence=getattr(px.colors.qualitative, color_scheme),
-        )
-
-        fig.update_traces(
-            textposition="inside",
-            textinfo="percent+label",
-            hovertemplate="<b>%{label}</b><br>Nombre: %{value}<br>Pourcentage: %{percent}<extra></extra>",
-        )
-
-        fig.update_layout(
-            showlegend=True,
-            legend=dict(orientation="v", yanchor="top", y=1, xanchor="left", x=1.02),
-            margin=dict(r=250),
-            height=height,
-        )
-
-    else:  # bar chart
-        # Créer un dataframe pour le graphique
-        df_plot = pd.DataFrame(
-            {
-                "Catégorie": value_counts.index,
-                "Nombre": value_counts.values,
-                "Pourcentage": (value_counts.values / len(values_list) * 100).round(1),
-            }
-        )
-
-        fig = px.bar(
-            df_plot,
-            x="Catégorie",
-            y="Nombre",
-            title=title,
-            text="Nombre",
-            color="Catégorie",
-            color_discrete_sequence=getattr(px.colors.qualitative, color_scheme),
-        )
-
-        fig.update_traces(
-            texttemplate="%{text}",
-            textposition="outside",
-            hovertemplate="<b>%{x}</b><br>Nombre: %{y}<br>Pourcentage: %{customdata:.1f}%<extra></extra>",
-            customdata=df_plot["Pourcentage"],
-        )
-
-        fig.update_layout(
-            showlegend=False,
-            xaxis_title=column_name.replace("_", " "),
-            yaxis_title="Nombre de réponses",
-            xaxis_tickangle=-45,
-            margin=dict(b=100),
-            height=height,
-        )
-
-    # Ajouter une annotation pour le nombre total de réponses
-    fig.add_annotation(
-        text=f"Total: {len(values_list)} réponses (multiples possibles)",
-        xref="paper",
-        yref="paper",
-        x=0,
-        y=-0.15,
-        showarrow=False,
-        font=dict(size=12, color="gray"),
-    )
-
-    return fig
-
-
-# import numpy as np
 st.set_page_config(
-    page_title="MotivIA - Analyse des questionnaires", page_icon="📊", layout="wide"
+    page_title="Données Professeurs - MotivIA", page_icon="📊", layout="wide"
 )
 
-st.title("Analyse des questionnaires MotivIA")
-st.subheader("Données de l'Académie d'Orléans-Tours.")
+st.title("📊 Analyse des données Professeurs")
+st.subheader("Questionnaire enseignants - Académie d'Orléans-Tours")
 
-df_prof = pd.read_csv("Data/profs.csv", index_col=0)
+# Charger les données
+df_original = pd.read_csv("Data/profs.csv", index_col=0)
+df_prof = df_original.copy()
 
 # Sidebar - Filtres
 st.sidebar.header("🔍 Filtres")
@@ -281,11 +69,12 @@ if "Type_etab" in df_prof.columns:
         default_types = [t for t in college_types if t in all_types]
 
     # Cases à cocher pour chaque type
-    selected_types = st.sidebar.multiselect(
+    selected_types = st.sidebar.pills(
         "Sélectionner les types:",
         options=all_types,
         default=default_types,
         help="Sélectionnez un ou plusieurs types d'établissement",
+        selection_mode="multi",
     )
 
     # Appliquer le filtre si des types sont sélectionnés
@@ -313,11 +102,12 @@ if "Departement" in df_prof.columns:
         default_depts = []
 
     # Cases à cocher pour chaque département
-    selected_depts = st.sidebar.multiselect(
+    selected_depts = st.sidebar.pills(
         "Sélectionner les départements:",
         options=available_depts,
         default=default_depts,
         help="Sélectionnez un ou plusieurs départements",
+        selection_mode="multi",
     )
 
     # Appliquer le filtre si des départements sont sélectionnés
