@@ -4,8 +4,6 @@ import plotly.graph_objects as go
 import plotly.express as px
 import sys
 import os
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import create_pie_chart, create_pie_chart_split
