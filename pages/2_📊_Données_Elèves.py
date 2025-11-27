@@ -4,6 +4,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 import sys
 import os
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utils import create_pie_chart, create_pie_chart_split
@@ -261,6 +263,15 @@ with tab3:
     )
     st.plotly_chart(fig_Raison_gene_comm_oral, use_container_width=True)
 
+    liste_gene_autre = [
+        "J'aime pas que cela est dit a voit haute",
+        "remarques des autres camarades (suite à un 21/20)",
+        "c'est un commentaire positif, mais ça me gêne d'avoir eu un compliment, seulement moi ou un petit groupe",
+        "",
+    ]
+    st.write("'Si tu as été mal à l'aise, pourquoi ?' Autres réponses :")
+    st.write(liste_gene_autre)
+
     bar_Impact_comm_oral = st.toggle(
         "Diagramme en barre", value=False, key="Impact_comm_oral"
     )
@@ -284,6 +295,23 @@ with tab4:
             chart_type="bar" if bar2 else "pie",
         )
         st.plotly_chart(fig_pref_ecrit_oral, use_container_width=True)
+
+    liste_autre = [
+        "Les oraux m'angoisse",
+        "Parce que c’est pareil",
+        "je ne sais pas",
+        "Car c'est clair ",
+        "je trouve ça mieux ",
+        "Car mes camarades ne peuvent pas voir ",
+        "Je n’ai pas vraiment d’explications à donner, je préfère juste. ",
+        "J’aime le fait que les professeurs prennent le temps de rédiger une appréciation : ils ont l’air plus impliqués dans la réussite des élèves ",
+        "Cela dépend des commentaires ",
+        "car c'est plus personnel",
+    ]
+    st.write(
+        "'Préfères-tu les commentaires oraux ou écrits ? Pourquoi ?' : 10 groupes de réponses"
+    )
+    st.write(liste_autre)
 
     with col2:
         # bar2 = st.toggle("Diagramme en barre", value=True, key=2)
@@ -331,6 +359,16 @@ with tab5:
         )
         st.plotly_chart(fig_Peur, use_container_width=True)
 
+    st.write(
+        "Comment les commentaires jouent-ils sur ta motivation à préparer au mieux la prochaine évaluation ? Pourquoi ?' : 3 groupes de réponses."
+    )
+    liste_motiv_text = [
+        "car j'ai envie d'avoir un meilleur commentaire a chaque fois",
+        "Cela me pousse à réussir",
+        "Ne sais pas quoi repondre",
+    ]
+    st.write(liste_motiv_text)
+
     st.subheader("Méthodes de travail")
     bar_Methodes_travail = st.toggle(
         "Diagramme en barre", value=False, key="Methodes_travail"
@@ -342,3 +380,12 @@ with tab5:
         chart_type="bar" if bar_Methodes_travail else "pie",
     )
     st.plotly_chart(fig_Methodes_travail, use_container_width=True)
+
+    st.write("Quelques réponses au commentaire libre :")
+    liste_comm_libre = [
+        "ils sont gentils, et essaye vraiment de m'aider pour ma part",
+        "Ils faut réussir à être moins sec quand certains parlent ",
+        "respecter et avoir une facon de parler aux eleves cela ne les concernent pas tous ",
+        "Motivé au lieu de rabaisser ",
+    ]
+    st.write(liste_comm_libre)
