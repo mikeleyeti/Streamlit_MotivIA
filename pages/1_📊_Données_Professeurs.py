@@ -284,6 +284,11 @@ with tab1:
         )
 
         st.plotly_chart(fig, use_container_width=True)
+        st.markdown(
+            """
+            :material/Comment: :blue[Les évaluations sont régulières, voire très régulières.] 
+            """
+        )
 
         # Optionnel : afficher le nombre total de réponses
         st.caption(
@@ -297,6 +302,11 @@ with tab1:
             "Usage d'une grille, des descripteurs ou des critères d'évaluation prédéfinis ",
         )
         st.plotly_chart(fig1, use_container_width=True)
+        st.markdown(
+            """
+            :material/Comment: :blue[L'usage d'une grille est très répandu, 75% des répondants utilisent des grilles d'évaluation de manière régulière (souvent ou toujours), ce qui témoigne d'une volonté de structurer et objectiver l'évaluation.] 
+            """
+        )
 
     fig1 = create_pie_chart_split(
         df_prof,
@@ -306,6 +316,11 @@ with tab1:
         chart_type="bar",
     )
     st.plotly_chart(fig1, use_container_width=True)
+    st.markdown(
+        """
+            :material/Comment: :blue[Les enseignants expriment trois préoccupations majeures d'égale importance (≈22% chacune) : la confidentialité des données élèves, la fiabilité des suggestions de l'IA et la protection des données, révélant une inquiétude centrale autour de la sécurité et de la pertinence pédagogique de l'outil.] 
+            """
+    )
 
     with tab2:
         col1, col2 = st.columns(2)
@@ -324,6 +339,11 @@ with tab1:
                 chart_type="bar",
             )
             st.plotly_chart(fig1, use_container_width=True)
+            st.markdown(
+                """
+            :material/Comment: :blue[Le manque de temps pour rédiger domine largement (40 réponses), suivi du manque de temps général (34) et de la répétitivité des commentaires (29), suggérant que la contrainte temporelle est le principal frein à la production de commentaires personnalisés et de qualité.] 
+            """
+            )
 
         col1, col2 = st.columns(2)
         with col1:
@@ -340,6 +360,11 @@ with tab1:
                 "Lecture des commentaires par les élèves ",
             )
             st.plotly_chart(fig1, use_container_width=True)
+            st.markdown(
+                """
+                :material/Comment: :blue[Les 3/4 des enseignants pensent que les élèves ne lisent pas les commentaires écrit, alors que dans les réponses élèves, plus de 80 % disent lire les commentaires.] 
+                """
+            )
 
     with tab3:
 
@@ -354,6 +379,12 @@ with tab1:
                 "Fréquence des commentaires à l'oral",
             )
             st.plotly_chart(fig1, use_container_width=True)
+        st.markdown(
+            """
+                :material/Comment: :blue[Les pratiques sont équilibrées avec 35,3% d'enseignants pratiquant régulièrement les commentaires oraux, 29,4% parfois, tandis que 26,5% les utilisent rarement ou jamais, révélant une diversité d'approches où l'oral reste une modalité de feedback significative mais non systématique.] 
+                """
+        )
+
         with col2:
             fig1 = create_pie_chart_split(
                 df_prof,
@@ -395,6 +426,11 @@ with tab1:
                 "Des élèves ont-ils déjà été mal à l'aise lorsque vous donniez un commentaire oral ?",
             )
             st.plotly_chart(fig1, use_container_width=True)
+            st.markdown(
+                """
+                    :material/Comment: :blue[Près de la moitié des élèves (47,1%) sont rarement mal à l'aise avec les feedbacks oraux, contre seulement 15,7% qui ne le sont jamais, suggérant que cette modalité est globalement bien acceptée mais nécessite une attention particulière pour environ un tiers des élèves qui peuvent parfois éprouver de l'inconfort.] 
+                    """
+            )
 
         col1, col2 = st.columns(2)
         with col1:
@@ -411,3 +447,14 @@ with tab1:
                 "Inconvénients des commentaires oraux.",
             )
             st.plotly_chart(fig1, use_container_width=True)
+
+        st.markdown(
+            """
+            :material/Comment: :blue[Avantages principaux :
+Les enseignants valorisent surtout le caractère direct et personnalisé (23,3%), la rapidité de formulation (19,4%) et la meilleure réceptivité des élèves (17,5%), confirmant l'efficacité relationnelle de cette modalité.
+Inconvénients majeurs :
+Le manque de temps en classe (23,5%) et l'absence de trace écrite (22,8%) dominent, suivis par le risque d'oubli rapide par les élèves (17,6%), révélant les contraintes pratiques et la problématique de pérennité du feedback oral.
+Constat global :
+L'oral est perçu comme un mode de feedback efficace et humanisant mais chronophage et volatile, suggérant un besoin d'outils permettant de combiner les avantages de l'oral (personnalisation, rapidité) avec la traçabilité de l'écrit.] 
+            """
+        )
