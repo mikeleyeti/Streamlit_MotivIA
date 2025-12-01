@@ -114,7 +114,7 @@ with tab1:
         st.metric("Nombre d'élèves", len(df_eleves))
     with col2:
         if "Classe" in df_eleves.columns:
-            st.metric("Classes représentées", df_eleves["Classe"].nunique())
+            st.metric("Niveaux représentés", df_eleves["Classe"].nunique())
     with col3:
         if "Niveau" in df_eleves.columns:
             st.metric("Niveaux représentés", df_eleves["Niveau"].nunique())
@@ -175,6 +175,13 @@ with tab2:
             chart_type="bar" if bar_Objectif_commentaire else "pie",
         )
         st.plotly_chart(fig_Objectif_commentaire, use_container_width=True)
+
+        st.markdown(
+            """
+                :material/Comment: :blue[Les enseignants privilégient massivement l'amélioration (38,3%) et la compréhension de la note (37,3%), contre seulement 8,6% pour la valorisation des réussites, révélant une approche davantage corrective qu'encourageante du feedback.] 
+                """
+        )
+
     with col2:
         bar_Impact_comm_ecrit = st.toggle(
             "Diagramme en barre", value=True, key="Impact_comm_ecrit"
@@ -186,6 +193,11 @@ with tab2:
             chart_type="bar" if bar_Impact_comm_ecrit else "pie",
         )
         st.plotly_chart(fig_Impact_comm_ecrit, use_container_width=True)
+        st.markdown(
+            """
+                :material/Comment: :blue[794 élèves jugent que les commentaires les aident "un peu" à progresser, contre seulement 187 "je ne sais pas" et 112 "pas du tout", révélant que les élèves reconnaissent une utilité modérée mais réelle des feedbacks écrits, même s'ils ne les perçoivent pas comme déterminants pour leur progression.] 
+                """
+        )
 
     bar_Comp_comm_ecrit = st.toggle(
         "Diagramme en barre", value=True, key="Comp_comm_ecrit"
@@ -224,6 +236,13 @@ with tab3:
             chart_type="bar" if bar_Moment_comm_oral else "pie",
         )
         st.plotly_chart(fig_Moment_comm_oral, use_container_width=True)
+    st.markdown(
+        """
+                :material/Comment: :blue[40,7% des élèves reçoivent "parfois" des commentaires oraux, 26,3% "rarement", contre seulement 14,5% "souvent", révélant une pratique occasionnelle de l'oral.
+Moments privilégiés :
+Les commentaires oraux interviennent principalement pendant la correction collective (604) et lors du retour de la copie (583), suivis par les discussions individuelles (318), montrant que l'oral reste majoritairement collectif plutôt qu'individualisé, ce qui peut limiter son impact personnalisé.] 
+                """
+    )
 
     col1, col2 = st.columns(2)
     with col1:
@@ -249,6 +268,14 @@ with tab3:
             chart_type="bar" if bar_Gene_comm_oral else "pie",
         )
         st.plotly_chart(fig_Gene_comm_oral, use_container_width=True)
+
+    st.markdown(
+        """
+                :material/Comment: :blue[35,8% préfèrent en privé contre 24,6% qui préfèrent devant la classe, mais 14,2% n'ont pas de préférence et 11,3% veulent même éviter l'oral, révélant des besoins différenciés selon les profils d'élèves.
+Malaise devant la classe :
+491 élèves ne sont "jamais" mal à l'aise et 424 "parfois", contre 394 "rarement", montrant une résilience majoritaire mais confirmant qu'environ 30% des élèves peuvent éprouver un inconfort public, justifiant l'importance d'adapter les modalités de feedback oral au contexte et à l'élève.] 
+                """
+    )
 
     bar_Raison_gene_comm_oral = st.toggle(
         "Diagramme en barre", value=True, key="Raison_gene_comm_oral"
@@ -334,6 +361,11 @@ with tab4:
             chart_type="bar" if bar3 else "pie",
         )
         st.plotly_chart(fig_Besoin_comm_oral, use_container_width=True)
+    st.markdown(
+        """
+            :material/Comment: :blue[Les élèves privilégient massivement l'aspect formatif : "mes points forts" (18,9%), "ce que j'ai bien fait" (18,9%), "ce que je dois corriger précisément" (17,5%) et "des conseils concrets pour progresser" (15,3%), contre seulement 12,1% pour les "encouragements pour me motiver", révélant une demande de feedback précis et actionnable plutôt qu'émotionnel.] 
+            """
+    )
 
 with tab5:
     st.subheader("Ressenti et motivation")
@@ -378,6 +410,12 @@ with tab5:
         chart_type="bar" if bar_Methodes_travail else "pie",
     )
     st.plotly_chart(fig_Methodes_travail, use_container_width=True)
+
+    st.markdown(
+        """
+                :material/Comment: :blue[Les stratégies dominantes sont "je relis le cours" (22,8%), "je refais des exercices" (10,9%) et "je révise avec des camarades" (9,6%), mais aussi "j'apprends par cœur les formules" (12,6%) et "j'essaie de faire des fiches" (8,75%), révélant une diversité des approches avec une prédominance de méthodes plutôt passives (relecture) sur les méthodes actives (exercices, fiches), suggérant un potentiel d'amélioration dans l'accompagnement méthodologique.] 
+                """
+    )
 
     st.write("Quelques réponses au commentaire libre :")
     liste_comm_libre = [
