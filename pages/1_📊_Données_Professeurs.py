@@ -341,7 +341,7 @@ with tab1:
             st.plotly_chart(fig1, use_container_width=True)
             st.markdown(
                 """
-            :material/Comment: :blue[Le manque de temps pour rédiger domine largement (40 réponses), suivi du manque de temps général (34) et de la répétitivité des commentaires (29), suggérant que la contrainte temporelle est le principal frein à la production de commentaires personnalisés et de qualité.] 
+            :material/Comment: :blue[Le manque d'impact perçu sur les élèves domine (39 réponses), suivi du manque de temps général (33) et de la répétitivité des commentaires (28), suggérant que la contrainte temporelle est le principal frein à la production de commentaires personnalisés et de qualité.] 
             """
             )
 
@@ -451,7 +451,7 @@ with tab1:
         st.markdown(
             """
             :material/Comment: :blue[Avantages principaux :
-Les enseignants valorisent surtout le caractère direct et personnalisé (23,3%), la rapidité de formulation (19,4%) et la meilleure réceptivité des élèves (17,5%), confirmant l'efficacité relationnelle de cette modalité.
+Les enseignants valorisent surtout le caractère direct et personnalisé (25,9%), la rapidité de formulation (19,4%) et la meilleure réceptivité des élèves (17,5%), confirmant l'efficacité relationnelle de cette modalité.
 Inconvénients majeurs :
 Le manque de temps en classe (23,5%) et l'absence de trace écrite (22,8%) dominent, suivis par le risque d'oubli rapide par les élèves (17,6%), révélant les contraintes pratiques et la problématique de pérennité du feedback oral.
 Constat global :

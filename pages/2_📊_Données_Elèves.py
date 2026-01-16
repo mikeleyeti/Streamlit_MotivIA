@@ -240,7 +240,7 @@ with tab3:
         """
                 :material/Comment: :blue[40,7% des élèves reçoivent "parfois" des commentaires oraux, 26,3% "rarement", contre seulement 14,5% "souvent", révélant une pratique occasionnelle de l'oral.
 Moments privilégiés :
-Les commentaires oraux interviennent principalement pendant la correction collective (604) et lors du retour de la copie (583), suivis par les discussions individuelles (318), montrant que l'oral reste majoritairement collectif plutôt qu'individualisé, ce qui peut limiter son impact personnalisé.] 
+Les commentaires oraux interviennent principalement pendant des discussions individuelles (618) et lors de correction collective (603)] 
                 """
     )
 
