@@ -178,7 +178,7 @@ with tab2:
 
         st.markdown(
             """
-                :material/Comment: :blue[Les enseignants privilégient massivement l'amélioration (38,3%) et la compréhension de la note (37,3%), contre seulement 8,6% pour la valorisation des réussites, révélant une approche davantage corrective qu'encourageante du feedback.] 
+                :material/Comment: :blue[Les élèves privilégient massivement l'amélioration (38,3%) et la compréhension de la note (37,3%), contre seulement 8,6% pour la valorisation des réussites, révélant une approche davantage corrective qu'encourageante du feedback.] 
                 """
         )
 
@@ -271,7 +271,7 @@ Les commentaires oraux interviennent principalement pendant des discussions indi
 
     st.markdown(
         """
-                :material/Comment: :blue[35,8% préfèrent en privé contre 24,6% qui préfèrent devant la classe, mais 14,2% n'ont pas de préférence et 11,3% veulent même éviter l'oral, révélant des besoins différenciés selon les profils d'élèves.
+                :material/Comment: :blue[39% préfèrent en privé contre 10% qui préfèrent devant la classe, mais 14,5% n'ont pas de préférence et 5% veulent même éviter l'oral, révélant des besoins différenciés selon les profils d'élèves.
 Malaise devant la classe :
 491 élèves ne sont "jamais" mal à l'aise et 424 "parfois", contre 394 "rarement", montrant une résilience majoritaire mais confirmant qu'environ 30% des élèves peuvent éprouver un inconfort public, justifiant l'importance d'adapter les modalités de feedback oral au contexte et à l'élève.] 
                 """
@@ -413,7 +413,7 @@ with tab5:
 
     st.markdown(
         """
-                :material/Comment: :blue[Les stratégies dominantes sont "je relis le cours" (22,8%), "je refais des exercices" (10,9%) et "je révise avec des camarades" (9,6%), mais aussi "j'apprends par cœur les formules" (12,6%) et "j'essaie de faire des fiches" (8,75%), révélant une diversité des approches avec une prédominance de méthodes plutôt passives (relecture) sur les méthodes actives (exercices, fiches), suggérant un potentiel d'amélioration dans l'accompagnement méthodologique.] 
+                :material/Comment: :blue[Les stratégies  "je relis le cours" (22%) et "je révise avec des camarades" (9%) révélant une diversité des approches avec une prédominance de méthodes plutôt passives (relecture) sur les méthodes actives (exercices 11%, fiches  13 %).] 
                 """
     )
 

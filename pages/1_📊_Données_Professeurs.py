@@ -304,7 +304,7 @@ with tab1:
         st.plotly_chart(fig1, use_container_width=True)
         st.markdown(
             """
-            :material/Comment: :blue[L'usage d'une grille est très répandu, 75% des répondants utilisent des grilles d'évaluation de manière régulière (souvent ou toujours), ce qui témoigne d'une volonté de structurer et objectiver l'évaluation.] 
+            :material/Comment: :blue[L'usage d'une grille est très répandu, 70% des répondants utilisent des grilles d'évaluation de manière régulière (souvent ou toujours), ce qui témoigne d'une volonté de structurer et objectiver l'évaluation.] 
             """
         )
 
@@ -318,7 +318,7 @@ with tab1:
     st.plotly_chart(fig1, use_container_width=True)
     st.markdown(
         """
-            :material/Comment: :blue[Les enseignants expriment trois préoccupations majeures d'égale importance (≈22% chacune) : la confidentialité des données élèves, la fiabilité des suggestions de l'IA et la protection des données, révélant une inquiétude centrale autour de la sécurité et de la pertinence pédagogique de l'outil.] 
+            :material/Comment: :blue[Les enseignants expriment trois préoccupations majeures d'égale importance (≈21% chacune) : la confidentialité des données élèves, la fiabilité des suggestions de l'IA et la protection des données, révélant une inquiétude centrale autour de la sécurité et de la pertinence pédagogique de l'outil.] 
             """
     )
 
@@ -428,7 +428,7 @@ with tab1:
             st.plotly_chart(fig1, use_container_width=True)
             st.markdown(
                 """
-                    :material/Comment: :blue[Près de la moitié des élèves (47,1%) sont rarement mal à l'aise avec les feedbacks oraux, contre seulement 15,7% qui ne le sont jamais, suggérant que cette modalité est globalement bien acceptée mais nécessite une attention particulière pour environ un tiers des élèves qui peuvent parfois éprouver de l'inconfort.] 
+                    :material/Comment: :blue[Près de la moitié des élèves (47,1%) sont rarement mal à l'aise avec les feedbacks oraux, contre seulement 15,7% qui ne le sont jamais, suggérant que cette modalité est globalement bien acceptée mais nécessite une attention particulière pour environ un quart des élèves qui peuvent parfois éprouver de l'inconfort.] 
                     """
             )
 
